@@ -6,10 +6,14 @@ angular.module('myApp.controllers', [])
   .controller('LandingPageController', [function() {
 
   }])
-  .controller('WaitlistController', ['$scope', 'partyService', 'textMessageService', function($scope, partyService, textMessageService) {
+  .controller('WaitlistController', ['$scope', 'partyService', 'textMessageService', 'authService', function($scope, partyService, textMessageService, authService) {
 
-    // Bind Firebase parties to $scope.
-    $scope.parties = partyService.parties;
+    // Bind user's parties to $scope.parties.
+    authService.getCurrentUser().then(function(user) {
+      if (user) {
+        $scope.parties = partyService.getPartiesByUserId(user.id);
+      };
+    });
 
     // Object to store data from the waitlist form.
     $scope.newParty = {name: '', phone: '', size: '', done: false, notified: 'No'};
