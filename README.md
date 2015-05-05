@@ -1,6 +1,6 @@
 # Wait and Eat
 
-This is the demo app for for https://www.angularcourse.com.
+This is the demo app for https://www.angularcourse.com.
 
 You can find a full working demo at http://www.waitandeat.com.
 
